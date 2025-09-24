@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: github-action-app-service
+  namespace: github-action-app
+  labels:
+    app: github-action-app
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 3000
+    protocol: TCP
+    name: http
+  selector:
+    app: github-action-app

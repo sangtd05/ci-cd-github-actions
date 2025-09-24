@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: github-action-app
+  labels:
+    name: github-action-app
+    app: github-action-app
