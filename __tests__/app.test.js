@@ -2,6 +2,11 @@ const request = require('supertest');
 const app = require('../index');
 
 describe('App', () => {
+  // Close any open handles after tests
+  afterAll((done) => {
+    // Give Jest time to clean up
+    setTimeout(done, 100);
+  });
   test('GET / should return welcome message', async () => {
     const response = await request(app)
       .get('/')
