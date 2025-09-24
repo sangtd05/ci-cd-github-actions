@@ -18,11 +18,21 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       
+    - name: Verify lock file exists
+      run: |
+        if [ ! -f package-lock.json ]; then
+          echo "package-lock.json not found!"
+          exit 1
+        fi
+        echo "package-lock.json found"
+        ls -la package-lock.json
+      
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
         node-version: '18'
         cache: 'npm'
+        cache-dependency-path: 'package-lock.json'
         
     - name: Install dependencies
       run: npm ci
